@@ -1,10 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use Symfony\Component\Process\Process;
 use App\Hotel;
-use App\Search;
 class HotelController extends Controller
 {
     /**
@@ -14,7 +13,8 @@ class HotelController extends Controller
      */
     public function index()
     {
-        $hotels = Hotel::paginate(9);
+        $hotels = Hotel::paginate(10);
+        //dd($hotels);
         return view('index', compact('hotels'));
     }
 
@@ -22,33 +22,29 @@ class HotelController extends Controller
 
     public function getGeography()
     {
-        $r = 6378137;
-        $lat = 42.3547;
-        $lon =-71.0615;
-        $lat2 = 36.13599594;
-        $lon2 = -115.1515128;
-        $delta_lat = deg2rad($lat2-$lat);
-        $delta_lon = deg2rad($lon2-$lon);
-        $a = sin($delta_lat/2)^2  + cos(deg2rad($lat)) + cos(deg2rad($lat2)) + sin($delta_lon/2)^2;
-        $c = 2 * atan2(sqrt($a), sqrt(1-$a));
-        $d = 6371*$c;
-        //dd($d);
-        $x = 132.78;
-        $y = 336.691;
-        $x2 = -22.7422;
-        $y2 = -43.3253;
-        $radians = deg2rad($lat);
+        $d = 100;
+        $lat = 156565;
+        $lon = 1565656;
+        $x = 1;
+        $y = 1;
 
-        ///$d = round(sqrt(($x2-$x)^2 + ($y2-$y)^2),2);
-        //$hotels = Hotel::where('')
+        // $process = new process("python3 C:\Users\mojiway\Desktop\test.py \"{$text}\"");
+        // //$process->setInput('foobar');
+        // $process->run();
+
+        // $hotels = Hotel::where()
         return view('geographical', compact('lat','lon','x','y','d'));
     }
 
     public function getTopSearches()
     {
-        $country = 'th';
-        $hotels = Search::where()
-        return view('top-searches');
+        $city = 'Seattle';
+        $hotels = Hotel::where('city',$city)
+                        ->orderBy('searches','desc')
+                        ->limit(10)
+                        ->get();
+
+        return view('top-searches', compact('hotels','city'));
     }
 
     /**
@@ -57,9 +53,12 @@ class HotelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(hotel $hotel)
     {
-        //
+        $city = $hotel->city;
+        //dd($city);
+        $related_hotels = Hotel::where('city', $city)->limit(4)->get();
+        return view('show',compact('hotel','related_hotels'));
     }
 
     /**

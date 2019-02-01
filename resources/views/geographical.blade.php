@@ -27,11 +27,10 @@
                     </p>
                 </div>
                 <div class="mt-4 col-md-4">
-                    <p>
-                        <strong>Distance(KM):</strong>
-                            {{ $d }}
-
-                    </p>
+                    <strong>Close Hotels:</strong>
+                    <?php
+                    echo shell_exec("python C:\\Users\\mojiway\\Desktop\\geo_list.py")
+                    ?>
                 </div>
             </div>
 

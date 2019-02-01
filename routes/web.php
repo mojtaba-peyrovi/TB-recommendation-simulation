@@ -14,3 +14,4 @@
 Route::get('/', 'HotelController@index');
 Route::get('/geographical', 'HotelController@getGeography');
 Route::get('/top-searches', 'HotelController@getTopSearches');
+Route::get('/hotels/{hotel}', 'HotelController@show');

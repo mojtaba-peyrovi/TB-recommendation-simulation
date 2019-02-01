@@ -67,11 +67,13 @@
       <h1 class="jumbotron-heading">Criterias</h1>
       <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
       <p>
-        <a href="#" class="btn btn-primary my-2">Gepgraphical</a>
-        <a href="#" class="btn btn-secondary my-2">Item Based</a>
-        <a href="#" class="btn btn-secondary my-2">Top Searches</a>
-        <a href="#" class="btn btn-secondary my-2">Top Bookings</a>
-        <a href="#" class="btn btn-secondary my-2">Similar Users</a>
+          <a href="/" class="btn btn-primary my-2">All Hotels</a>
+        <a href="{{ url('geographical') }}" class="btn btn-primary my-2">Gepgraphical</a>
+        <a href="#" class="btn btn-primary my-2">Item Based</a>
+        <a href="{{ url('top-searches') }}" class="btn btn-primary my-2">Top Searches</a>
+        <a href="#" class="btn btn-primary my-2">Top Bookings</a>
+        <a href="#" class="btn btn-primary my-2">Similar Users</a>
+        <a href="#" class="btn btn-primary my-2">TripAdvisor Score</a>
       </p>
     </div>
   </section>
@@ -84,8 +86,7 @@
     <p class="float-right">
       <a href="#">Back to top</a>
     </p>
-    <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-    <p>New to Bootstrap? <a href="https://getbootstrap.com">Visit the homepage</a> or read our <a href="/docs/4.2/getting-started/introduction/">getting started guide</a>.</p>
+
   </div>
 </footer>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -113,7 +114,7 @@
         var dLon = rad(p2.lon-p1.lon);
         var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
                         Math.cos(rad(p1.lat)) * Math.cos(rad(p2.lat)) *
-                        Math.sin(dLon/2) * Math.sin(dLon/2); 
+                        Math.sin(dLon/2) * Math.sin(dLon/2);
         var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
         var d = R * c;
         console.log(d);
