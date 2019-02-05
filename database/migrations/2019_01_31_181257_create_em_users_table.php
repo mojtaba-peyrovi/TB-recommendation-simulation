@@ -24,8 +24,11 @@ class CreateEmUsersTable extends Migration
             $table->float('wieght_target');
             $table->boolean('pic_exist');
             $table->integer('motivation_degree');
+            $table->string('motivation_types');
             $table->boolean('sex_match');
             $table->integer('diet_method_code');
+            $table->string('is_friend_with_id');
+            $table->string('is_liked_by_id');
             $table->double('latitude');
             $table->float('longitude');
             $table->timestamps();

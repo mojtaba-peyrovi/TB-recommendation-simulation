@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Symfony\Component\Process\Process;
 use App\Hotel;
+use DB;
 class HotelController extends Controller
 {
     /**
@@ -14,37 +15,7 @@ class HotelController extends Controller
     public function index()
     {
         $hotels = Hotel::paginate(10);
-        //dd($hotels);
         return view('index', compact('hotels'));
-    }
-
-
-
-    public function getGeography()
-    {
-        $d = 100;
-        $lat = 156565;
-        $lon = 1565656;
-        $x = 1;
-        $y = 1;
-
-        // $process = new process("python3 C:\Users\mojiway\Desktop\test.py \"{$text}\"");
-        // //$process->setInput('foobar');
-        // $process->run();
-
-        // $hotels = Hotel::where()
-        return view('geographical', compact('lat','lon','x','y','d'));
-    }
-
-    public function getTopSearches()
-    {
-        $city = 'Seattle';
-        $hotels = Hotel::where('city',$city)
-                        ->orderBy('searches','desc')
-                        ->limit(10)
-                        ->get();
-
-        return view('top-searches', compact('hotels','city'));
     }
 
     /**
@@ -57,8 +28,14 @@ class HotelController extends Controller
     {
         $city = $hotel->city;
         //dd($city);
-        $related_hotels = Hotel::where('city', $city)->limit(4)->get();
-        return view('show',compact('hotel','related_hotels'));
+        $hotels = Hotel::where('city', $city)->limit(4)->get();
+        return view('show',compact('hotel','hotels'));
+    }
+
+    public function mainRecommendation()
+    {
+        $hotels = DB::select('select * from final_hotels');
+        return view('main-recommendation', compact('hotels'));
     }
 
     /**

@@ -26,6 +26,7 @@
     </style>
     <!-- Custom styles for this template -->
     <link href="basic-style.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
   </head>
   <body>
     <header>
@@ -64,16 +65,16 @@
 
   <section class="jumbotron text-center">
     <div class="container">
-      <h1 class="jumbotron-heading">Criterias</h1>
-      <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+      <h1 class="jumbotron-heading">Scenarios</h1>
+      <p class="lead text-muted">Different secenarios to recommend users in different situations</p>
       <p>
           <a href="/" class="btn btn-primary my-2">All Hotels</a>
-        <a href="{{ url('geographical') }}" class="btn btn-primary my-2">Gepgraphical</a>
-        <a href="#" class="btn btn-primary my-2">Item Based</a>
-        <a href="{{ url('top-searches') }}" class="btn btn-primary my-2">Top Searches</a>
-        <a href="#" class="btn btn-primary my-2">Top Bookings</a>
-        <a href="#" class="btn btn-primary my-2">Similar Users</a>
-        <a href="#" class="btn btn-primary my-2">TripAdvisor Score</a>
+        <a href="{{ url('main-recommendation') }}" class="btn btn-primary my-2">Main Recommendation (all criterias)</a>
+        <a href="#" class="btn btn-primary my-2">User Based</a>
+        <a href="{{ url('top-searches') }}" class="btn btn-primary my-2">Hotel Based</a>
+        <a href="#" class="btn btn-primary my-2">Scenario 3</a>
+        <a href="#" class="btn btn-primary my-2">Scenario 4</a>
+        <a href="#" class="btn btn-primary my-2">Scenario 5</a>
       </p>
     </div>
   </section>
