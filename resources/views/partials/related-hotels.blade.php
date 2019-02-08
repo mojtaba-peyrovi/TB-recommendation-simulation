@@ -5,11 +5,11 @@
 </style>
 <div class="col-md-3">
   <div class="card related-hotels mb-4 shadow-sm bg-light">
+      <div class="card-header bg-warning text-white">
+          {{ str_limit($hotel->hotel_name, $limit=20, $end='...') }}
+      </div>
     <div class="card-body ml-2">
       <p class="card-text">
-          <h6 class="text-success text-left mb-5">
-               <a href="/hotels/{{ $hotel->id }}" class="text-success">{{ $hotel->hotel_name }}</a>
-          </h6>
           <div class="row">
               <div class="mr-5">
                   <div>
@@ -17,31 +17,35 @@
                       {{ $hotel->city }}
                   </div>
                   <div>
-                      <strong>Searches:</strong>
-                      {{ $hotel->searches }}
+                      <strong>Revenue:</strong>
+                      {{ $hotel->estimated_revenue }}
+                  </div>
+                  <div>
+                      <strong>Stars:</strong>
+                      {{ $hotel->stars}}
                   </div>
               </div>
               <div class="mr-5">
                   <div class="">
                       <div>
                           <strong>GBV:</strong>
-                          {{ $hotel->gbv }}
+                          {{ $hotel->GBV }}
                       </div>
                       <div>
                           <strong>RNS:</strong>
-                          {{ $hotel->rns }}
+                          {{ $hotel->RNS }}
                       </div>
                   </div>
               </div>
               <div class="mr-5">
                   <div class="">
                       <div>
-                          <strong>Orders:</strong>
-                          {{ $hotel->orders }}
+                          <strong>Bookings:</strong>
+                          {{ $hotel->bookings }}
                       </div>
                       <div>
-                          <strong>TripAdvisor Score:</strong>
-                          {{ $hotel->ta_score }}
+                          <strong>Distance</strong>
+                          {{ $hotel->distance }}
                       </div>
                   </div>
               </div>

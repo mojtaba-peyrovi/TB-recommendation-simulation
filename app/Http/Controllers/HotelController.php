@@ -26,9 +26,7 @@ class HotelController extends Controller
      */
     public function show(hotel $hotel)
     {
-        $city = $hotel->city;
-        //dd($city);
-        $hotels = Hotel::where('city', $city)->limit(4)->get();
+        $hotels = DB::select('select * from hotel_based');
         return view('show',compact('hotel','hotels'));
     }
 
